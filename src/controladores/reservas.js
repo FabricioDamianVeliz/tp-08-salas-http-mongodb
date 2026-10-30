@@ -89,12 +89,11 @@ function crearControladorReservas(servicio) {
 
     obtenerEstado: async (req, res, next) => {
       try {
-        const totalReservas = await servicio.contar();
+        const cantidadRegistros = await servicio.contar();
         res.status(200).json({
-          ok: true,
-          servicio: "reservas-salas",
-          totalReservas,
-          cantidadReservas: totalReservas,
+          servicio: "Reservas de Salas de Estudio",
+          cantidades: cantidadRegistros,
+          solicitudId: res.locals.solicitudId,
         });
       } catch (error) {
         next(error);
